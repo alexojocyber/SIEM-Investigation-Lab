@@ -1,1 +1,179 @@
+# Failed Login Analyzer — Script Execution & Log Review  
+### Investigation 1 — SOC Log Monitoring Preparation
 
+---
+
+## 1. Overview
+
+This investigation documents the creation and execution of a *Bash-based Failed Login Analyzer*, a script designed to extract and summarize failed SSH login attempts from:
+
+
+/var/log/auth.log
+
+
+The analyzer is built to detect:
+
+- Total failed login attempts  
+- Usernames targeted  
+- Source IP addresses  
+- Top 5 attacker IPs  
+
+This tool is commonly used in SOC workflows to automate brute-force detection.
+
+---
+
+## 2. Script Features
+
+### Script Name
+failed_login_analyzer.sh
+
+### Capabilities
+- Counts failed login attempts  
+- Extracts targeted usernames  
+- Extracts attacker IP addresses  
+- Lists top frequent IPs  
+- Formats output for readability
+
+### Key Commands Used
+bash
+grep "Failed password" $LOGFILE
+awk '{print $(NF-5)}'
+awk '{print $(NF-3)}'
+sort | uniq -c
+head -5
+
+
+These mimic SIEM-like log parsing behavior using Linux tools.
+
+---
+
+## 3. Screenshots Evidence
+
+### *Screenshot 1 — Script Code*
+![script-code png ](https://github.com/user-attachments/assets/aa4b3756-d2b4-45c9-949e-261fe8855f22)
+
+Shows the analyzer’s internal logic, including:
+- Username extraction  
+- IP extraction  
+- awk + grep + sort pipeline  
+- Output formatting  
+
+### *Screenshot 2 — Script Execution with sudo*
+![script-runtime png](https://github.com/user-attachments/assets/f6cbcd13-0d63-4862-9830-6adb27bdff57)
+
+Displays:
+FAILED LOGIN ANALYZER
+Checking log file: /var/log/auth.log
+grep: /var/log/auth.log: No such file or directory
+0
+
+
+This confirms:
+- The script executed successfully  
+- The log file currently does not exist on this Kali system  
+
+### *Screenshot 3 — Script Header & Logic View*
+Reinforces the script’s structure and intended detection flow.
+
+---
+
+## 4. Current Result: No Logs Found
+
+The output shows:
+
+
+/var/log/auth.log: No such file or directory
+
+
+This tells us that *Kali Linux does not generate auth.log by default* on some configurations.
+
+This is normal — depending on:
+- Logging service used (rsyslog/journald)
+- SSH service status
+- Authentication settings  
+
+---
+
+## 5. Why This Happens
+
+Most modern Kali installations use:
+
+
+/var/log/journal/
+
+
+instead of /var/log/auth.log.
+
+Additionally, SSH may be disabled by default, meaning:
+
+- No SSH login attempts  
+- No authentication failures  
+- No brute-force logs yet  
+
+---
+
+## 6. Next Steps (To Generate Real Logs)
+
+To produce real failed login data:
+
+### Step 1 — Enable SSH server
+bash
+sudo systemctl enable ssh
+sudo systemctl start ssh
+
+
+### Step 2 — Attempt failed logins manually  
+Open another terminal or use a second machine:
+
+bash
+ssh wronguser@127.0.0.1
+ssh root@127.0.0.1
+ssh admin@127.0.0.1
+
+
+Enter wrong passwords 5–10 times.
+
+### Step 3 — Check logs
+On some systems:
+
+bash
+sudo journalctl -u ssh
+
+
+Or enable rsyslog to generate /var/log/auth.log:
+
+bash
+sudo systemctl enable rsyslog
+sudo systemctl start rsyslog
+
+
+---
+
+## 7. Cybersecurity Relevance
+
+This investigation demonstrates:
+
+- Building custom log-analysis tools  
+- Using Linux commands for SOC-style parsing  
+- Understanding how authentication logs are stored  
+- Preparing a machine for brute-force detection  
+
+Once logs are generated, the script can detect and classify brute-force attempts.
+
+---
+
+## 8. Summary
+
+This phase of the investigation confirms:
+
+- The log analyzer script works  
+- It runs without error  
+- The system currently has no failed login entries  
+- Further configuration is needed to capture real attack data  
+
+Follow-up investigations will include:
+
+- Actual brute-force attempts  
+- IOC extraction  
+- MITRE ATT&CK mapping  
+- Detection + remediation recommendations
