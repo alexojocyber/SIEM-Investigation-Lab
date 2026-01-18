@@ -133,18 +133,3 @@ This project demonstrates complete readiness for roles such as:
 - *Incident Response Intern*  
 - *Blue Team Apprentice*  
 
-It shows:
-
-✔ Hands-on attack simulation  
-✔ Accurate investigation skills  
-✔ Real log analysis  
-✔ Ability to write professional reports  
-✔ Understanding of attacker behavior  
-✔ Capability to automate detection tasks  
-✔ Practical security-hardening knowledge  
-
-This is exactly the type of practical, real work hiring managers want to see in an entry-level cybersecurity or SOC portfolio.
-
----
-
-*End of Summary*
