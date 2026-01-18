@@ -163,13 +163,4 @@ Although no credentials were compromised, the attack reinforces the importance o
 - Implementing automated blocking  
 - Monitoring authentication logs regularly  
 
-This investigation demonstrates your capability in:
 
-- Log analysis  
-- SSH configuration  
-- Attack simulation  
-- SOC-style incident reporting  
-
----
-
-*End of Report*
