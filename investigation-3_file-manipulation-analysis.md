@@ -158,16 +158,4 @@ ls -l
 
 ---
 
-## 7. Final Assessment  
-The screenshots demonstrate:
 
-- Proficiency in Linux file manipulation  
-- Understanding of file redirection operators (>, >>)  
-- Ability to analyze script logic  
-- Awareness of how bash scripts can mimic malicious behavior  
-
-This investigation provides strong proof of fundamental forensics and Linux administration skills.
-
----
-
-*End of Report*
