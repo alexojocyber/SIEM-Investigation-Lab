@@ -125,11 +125,5 @@ This mirrors real-world Linux forensic investigation where analysts check for:
 
 ---
 
-#  Final Assessment  
-This project demonstrates complete readiness for roles such as:
-
-- *SOC Analyst (Tier 1)*  
-- *Cybersecurity Analyst*  
-- *Incident Response Intern*  
-- *Blue Team Apprentice*  
+  
 
