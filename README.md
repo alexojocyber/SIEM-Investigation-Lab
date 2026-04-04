@@ -124,6 +124,24 @@ This mirrors real-world Linux forensic investigation where analysts check for:
 - analyst-driven conclusions  
 
 ---
+---
 
+## 🔗 Related Projects
+
+This lab is part of a complete SOC workflow:
+
+| Project | Description |
+|---------|-------------|
+| [SSH Brute Force Detection Lab](https://github.com/alexojocyber/SSH-BruteForce-Detection-Lab) | Real SSH attack simulation + Fail2Ban defense |
+| [Splunk SIEM Lab](https://github.com/alexojocyber/Splunk-SIEM-Lab) | Enterprise detection dashboard using Splunk Cloud |
+| [Python Log Parser](https://github.com/alexojocyber/Python-Log-Parser) | Automated Python script for brute force detection |
+
+## 👨‍💻 Author
+
+**Alex Ojo**
+Cybersecurity Student | SOC Analyst Trainee
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://linkedin.com/in/alex-o-ojo-ab9252185)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/alexojocyber)
   
 
